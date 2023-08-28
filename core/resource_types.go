@@ -14,6 +14,8 @@
 
 package core
 
+import "log/slog"
+
 type ResourceTypes int
 
 const (
@@ -48,4 +50,8 @@ func (rt ResourceTypes) String() string {
 		return "LoadBalancer"
 	}
 	return "unknown"
+}
+
+func (rt ResourceTypes) LogValue() slog.Value {
+	return slog.StringValue(rt.String())
 }

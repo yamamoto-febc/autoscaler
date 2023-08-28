@@ -14,7 +14,10 @@
 
 package core
 
-import "fmt"
+import (
+	"fmt"
+	"log/slog"
+)
 
 type RequestTypes int
 
@@ -33,6 +36,10 @@ func (r RequestTypes) String() string {
 	default:
 		return "unknown request type"
 	}
+}
+
+func (r RequestTypes) LogValue() slog.Value {
+	return slog.StringValue(r.String())
 }
 
 type requestInfo struct {
